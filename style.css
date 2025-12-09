@@ -1,0 +1,118 @@
+:root {
+  --bg: #f6f7fb;
+  --card: #ffffff;
+  --accent: #ff4d4d;
+  --text: #222;
+  --muted: #666;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(180deg,#eef2ff 0%, #f6f7fb 100%);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.card {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(25, 40, 60, 0.08);
+  width: min(820px, 100%); /* expanded to make room for side panel, responsive */
+  text-align: center;
+}
+
+.title { font-size: 18px; margin: 0 0 12px 0; }
+
+/* NO idle animation: light is dim by default; .on makes it bright during Morse pulses */
+.light {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 8px auto 14px auto;
+  background: var(--accent);
+  /* dim / off default */
+  opacity: 0.12;
+  transform: scale(0.95);
+  box-shadow: none;
+  cursor: pointer;
+}
+
+/* Bright "on" state for Morse pulses */
+.light.on {
+  transform: scale(1.06);
+  opacity: 1;
+  box-shadow: 0 0 18px rgba(255,77,77,0.95), 0 0 32px rgba(255,77,77,0.45) inset;
+}
+
+/* layout: controls on left, side panel on right; image vertically aligned */
+.main-row {
+  display: flex;
+  align-items: center; /* vertically align image with the number fields */
+  gap: 16px;
+  margin-top: 6px;
+}
+.controls { flex: 1; } /* let the controls take available space */
+
+.side-info {
+  width: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  box-sizing: border-box;
+}
+.side-info .side-text {
+  font-size: 14px;
+  color: var(--text);
+  text-align: center;
+}
+.side-info .side-img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Responsive: stack on narrow screens */
+@media (max-width: 700px) {
+  .main-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .side-info {
+    width: 100%;
+    flex-direction: row;
+    gap: 12px;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .side-info .side-text { text-align: left; }
+  .side-info .side-img { width: 72px; }
+}
+
+.controls { display: grid; gap: 10px; margin-top: 6px; }
+.row { display:flex; align-items:center; gap:8px; }
+.label { width:36px; text-align:left; font-size:14px; color:var(--muted); }
+
+input[type="number"] {
+  -moz-appearance: textfield; appearance: textfield;
+  width:100%; padding:8px 10px; font-size:16px; border-radius:8px; border:1px solid #e6e9f5; text-align:center;
+}
+
+.input-wrap { display:flex; gap:8px; align-items:center; flex:1; }
+
+.dict-area { margin-top:12px; text-align:left; }
+.dict-row { margin-top:8px; display:flex; gap:8px; align-items:center; }
+.unit-label { font-size:13px; color:var(--muted); }
+.unit-label input { width:70px; margin-left:6px; padding:6px; border-radius:6px; border:1px solid #e6e9f5; }
+
+.status-row { margin-top:8px; display:flex; gap:8px; align-items:center; justify-content:space-between; }
+.hash-out { font-size:12px; color:#333; font-family:monospace; }
+.status { font-size:12px; color:var(--muted); }
+
+.small-btn { font-size:12px; padding:6px 10px; border-radius:8px; border:none; background:#eef2ff; cursor:pointer; }
