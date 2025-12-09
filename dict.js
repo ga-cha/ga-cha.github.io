@@ -1665,7 +1665,7 @@ window.DICT = [
     "menus",
     "mercy",
     "meres",
-    "marko",
+    "modes",
     "merit",
     "merry",
     "mesas",
