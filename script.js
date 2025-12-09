@@ -140,9 +140,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 else seq.push({ on: true, duration: unitMs * 3 });
                 seq.push({ on: false, duration: unitMs * 1 });
             }
-            seq.push({ on: false, duration: unitMs * 2 });
+            seq.push({ on: false, duration: unitMs * 3 }); // space between letters
             }
-            if (wi < words.length - 1) seq.push({ on: false, duration: unitMs * 4 });
+            if (wi < words.length - 1) seq.push({ on: false, duration: unitMs * 7 }); // space between words
         }
 
         try {
